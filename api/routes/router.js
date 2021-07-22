@@ -1,4 +1,5 @@
 import express from "express";
+import { videosCollection } from "../models/videos";
 
 const router = express.Router();
 
@@ -37,7 +38,6 @@ router.get("/videos/:id", (req, res) => {
 
 // exclusão do registro
 router.delete("/videos/:id", (req, res) => {
-  
   let indice = videos.findIndex((result) => {
     return result.id === req.params.id;
   });
@@ -58,6 +58,15 @@ router.patch("/videos", (req, res) => {
   });
 
   res.send(requisicao);
+});
+
+router.post("/videos", (req, res) => {
+  const adicionar = req.body;
+
+  //videosCollection.find
+  console.log(adicionar);
+
+  res.send(adicionar);
 });
 
 export default router;
